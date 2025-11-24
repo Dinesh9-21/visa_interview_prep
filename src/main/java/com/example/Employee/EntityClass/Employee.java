@@ -1,6 +1,7 @@
 package com.example.Employee.EntityClass;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Pattern;
@@ -17,11 +18,12 @@ public class Employee{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotBlank(message = "Name should not be empty or blank ")
+
     private String name;
     private String dept;
+
     private Long salary;
-    @PastOrPresent(message = "Date must be either today's date or Past Date should not be more than that")
+
     private LocalDate joinDate;
 
     public int getId() {

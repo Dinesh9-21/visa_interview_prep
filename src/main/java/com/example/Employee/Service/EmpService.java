@@ -3,9 +3,11 @@ package com.example.Employee.Service;
 import com.example.Employee.DAO.EmployeeDAO;
 import com.example.Employee.DTO.ContractEmployeeDTO;
 import com.example.Employee.DTO.PermenantEmployeeDTO;
+import com.example.Employee.EmployeeApplication;
 import com.example.Employee.EntityClass.ContractEmployee;
 import com.example.Employee.EntityClass.Employee;
 import com.example.Employee.EntityClass.PermenantEmployee;
+import com.example.Employee.ExceptionHandler.EmployeeNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmpService {
@@ -43,6 +46,17 @@ public class EmpService {
                 return mapper.map(emp,PermenantEmployeeDTO.class);
             }}).toList();
         return new ResponseEntity<List<?>>(employees, HttpStatus.OK);
-
     }
+
+    public ResponseEntity<?> getEmployee(int id){
+        Employee employee = dao.findById(id).orElseThrow(()->new EmployeeNotFoundException("Employee with id : "+id+" not present..."));
+        return new ResponseEntity<>(employee,HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> deleteEmployee(int id){
+        dao.deleteById(id);
+        return ResponseEntity.ok("Deletion done..... for the ID : "+id);
+    }
+
+
 }

@@ -1,6 +1,9 @@
 package com.example.Employee.DTO;
 
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,9 +15,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PermenantEmployeeDTO {
+    @NotBlank(message = "Name must not be blank or empty...")
     private String name;
     private String dept;
+    @Min(value = 100000,message = "Minimum salary must be more than 100000....")
     private Long salary;
+    @PastOrPresent(message = "Join Date must be less than current day.....")
     private LocalDate joinDate;
     private Long benefits;
 

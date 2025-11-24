@@ -1,5 +1,8 @@
 package com.example.Employee.DTO;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,10 +15,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ContractEmployeeDTO {
 
+    @NotBlank(message = "Name must not be empty or nulll....")
     private String name;
     private String dept;
+    @Min(value = 100000,message = "Salary must be min of 100000......")
     private  Long salary;
+    @PastOrPresent(message = "Your join date must be less than your current date..")
     private LocalDate joinDate;
+    @Min(value = 1,message = "Minimum contract duration must be 1 year...")
     private int contract_duration;
 
     public LocalDate getJoinDate() {
