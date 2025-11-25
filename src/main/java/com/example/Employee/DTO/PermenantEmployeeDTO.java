@@ -1,5 +1,6 @@
 package com.example.Employee.DTO;
 
+import com.example.Employee.EntityClass.Department;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
@@ -15,7 +16,7 @@ public class PermenantEmployeeDTO {
   @NotBlank(message = "Name must not be blank or empty...")
   private String name;
 
-  private String dept;
+  private Department department;
 
   @Min(value = 100000, message = "Minimum salary must be more than 100000....")
   private Long salary;
@@ -49,15 +50,15 @@ public class PermenantEmployeeDTO {
     this.name = name;
   }
 
-  public String getDept() {
-    return dept;
-  }
+    public Department getDepartment() {
+        return department;
+    }
 
-  public void setDept(String dept) {
-    this.dept = dept;
-  }
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 
-  public LocalDate getJoinDate() {
+    public LocalDate getJoinDate() {
     return joinDate;
   }
 

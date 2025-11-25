@@ -11,20 +11,32 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class EmpController {
 
-  @Autowired private EmpService service;
+    @Autowired
+    private EmpService service;
 
-  @PostMapping("/contract")
-  public ResponseEntity<?> saveContractEmp(@RequestBody @Valid ContractEmployeeDTO dto) {
-    return service.saveContractEmp(dto);
-  }
 
-  @PostMapping("/permenant")
-  public ResponseEntity<?> savePermenantEmp(@RequestBody @Valid PermenantEmployeeDTO dto) {
-    return service.savePermenantEmp(dto);
-  }
+    @PostMapping("/contract")
+    public ResponseEntity<?> saveContractEmp(@RequestBody @Valid  ContractEmployeeDTO dto){
+        return service.saveContractEmp(dto);
+    }
 
-  @GetMapping("/get_employees")
-  public ResponseEntity<?> getEmployees() {
-    return service.getContractEmployess();
-  }
+    @PostMapping("/permenant")
+    public ResponseEntity<?> savePermenantEmp(@RequestBody @Valid PermenantEmployeeDTO dto){
+        return service.savePermenantEmp(dto);
+    }
+
+    @GetMapping("/get_employees")
+    public ResponseEntity<?> getEmployees(){
+        return service.getContractEmployess();
+    }
+
+
+
+
+
+
+
+
+
+
 }

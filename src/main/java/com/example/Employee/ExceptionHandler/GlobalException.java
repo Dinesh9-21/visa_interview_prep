@@ -1,5 +1,6 @@
 package com.example.Employee.ExceptionHandler;
 
+import java.awt.geom.RectangularShape;
 import java.util.HashMap;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,4 +18,9 @@ public class GlobalException {
         .map(err -> errors.put(err.getField(), err.getDefaultMessage()));
     return new ResponseEntity<>(errors, HttpStatus.OK);
   }
+
+  @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<String> runtimeException(RuntimeException exception){
+      return new ResponseEntity<>(exception.getMessage(),HttpStatus.NOT_ACCEPTABLE);
+    }
 }
