@@ -50,15 +50,15 @@ public class PermenantEmployeeDTO {
     this.name = name;
   }
 
-    public Department getDepartment() {
-        return department;
-    }
+  public Department getDepartment() {
+    return department;
+  }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
+  public void setDepartment(Department department) {
+    this.department = department;
+  }
 
-    public LocalDate getJoinDate() {
+  public LocalDate getJoinDate() {
     return joinDate;
   }
 
