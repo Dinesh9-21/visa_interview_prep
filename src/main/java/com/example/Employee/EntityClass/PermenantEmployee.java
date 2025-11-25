@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class PermenantEmployee extends  Employee{
-    private Long benefits;
+public class PermenantEmployee extends Employee {
+  private Long benefits;
 
-    public Long getBenefits() {
-        return benefits;
-    }
+  public Long getBenefits() {
+    return benefits;
+  }
 
-    public void setBenefits(Long benefit) {
-        benefits = benefit;
-    }
+  public void setBenefits(Long benefit) {
+    benefits = benefit;
+  }
 }
