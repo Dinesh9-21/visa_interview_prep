@@ -1,7 +1,7 @@
 package com.example.Employee.ExceptionHandler;
 
-public class EmployeeNotFoundException extends  RuntimeException{
-    public EmployeeNotFoundException(String msg){
-        super(msg);
-    }
+public class EmployeeNotFoundException extends RuntimeException {
+  public EmployeeNotFoundException(String msg) {
+    super(msg);
+  }
 }

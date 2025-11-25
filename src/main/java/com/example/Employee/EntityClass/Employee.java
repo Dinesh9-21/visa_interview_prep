@@ -1,70 +1,63 @@
 package com.example.Employee.EntityClass;
+
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Pattern;
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Employee{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Employee {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-    private String name;
-    private String dept;
+  private String name;
+  private String dept;
 
-    private Long salary;
+  private Long salary;
 
-    private LocalDate joinDate;
+  private LocalDate joinDate;
 
-    public int getId() {
-        return id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getDept() {
-        return dept;
-    }
+  public String getDept() {
+    return dept;
+  }
 
-    public void setDept(String dept) {
-        this.dept = dept;
-    }
+  public void setDept(String dept) {
+    this.dept = dept;
+  }
 
-    public Long getSalary() {
-        return salary;
-    }
+  public Long getSalary() {
+    return salary;
+  }
 
-    public LocalDate getJoinDate() {
-        return joinDate;
-    }
+  public LocalDate getJoinDate() {
+    return joinDate;
+  }
 
-    public void setJoinDate(LocalDate joinDate) {
-        this.joinDate = joinDate;
-    }
+  public void setJoinDate(LocalDate joinDate) {
+    this.joinDate = joinDate;
+  }
 
-    public void setSalary(Long salary) {
-        this.salary = salary;
-    }
-
-
+  public void setSalary(Long salary) {
+    this.salary = salary;
+  }
 }
