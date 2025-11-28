@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+@Table(name = "employee")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,11 +16,14 @@ public class Employee {
   private int id;
 
   private String name;
-  private String dept;
 
   private Long salary;
 
   private LocalDate joinDate;
+
+  @ManyToOne
+  @JoinColumn(name = "department_id", referencedColumnName = "dept_id")
+  private Department department;
 
   public int getId() {
     return id;
@@ -37,12 +41,12 @@ public class Employee {
     this.name = name;
   }
 
-  public String getDept() {
-    return dept;
+  public Department getDepartment() {
+    return department;
   }
 
-  public void setDept(String dept) {
-    this.dept = dept;
+  public void setDepartment(Department department) {
+    this.department = department;
   }
 
   public Long getSalary() {

@@ -1,5 +1,6 @@
 package com.example.Employee.DTO;
 
+import com.example.Employee.EntityClass.Department;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
@@ -13,10 +14,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ContractEmployeeDTO {
 
-  @NotBlank(message = "Name must not be empty or nulll....")
+  @NotBlank(message = "Name must not be empty or null....")
   private String name;
 
-  private String dept;
+  private Department department;
 
   @Min(value = 100000, message = "Salary must be min of 100000......")
   private Long salary;
@@ -59,11 +60,11 @@ public class ContractEmployeeDTO {
     this.name = name;
   }
 
-  public String getDept() {
-    return dept;
+  public Department getDepartment() {
+    return department;
   }
 
-  public void setDept(String dept) {
-    this.dept = dept;
+  public void setDepartment(Department department) {
+    this.department = department;
   }
 }

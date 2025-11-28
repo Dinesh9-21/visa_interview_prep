@@ -25,6 +25,13 @@ public class EmpController {
 
   @GetMapping("/get_employees")
   public ResponseEntity<?> getEmployees() {
-    return service.getContractEmployess();
+    return service.getEmployess();
   }
+
+
+  @DeleteMapping("/delete_employee")
+    public ResponseEntity<?> deleteEmployee(@RequestParam("name") String name){
+      return service.deleteEmployeeByName(name);
+  }
+
 }
