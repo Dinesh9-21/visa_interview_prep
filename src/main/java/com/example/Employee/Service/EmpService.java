@@ -10,10 +10,14 @@ import com.example.Employee.EntityClass.Employee;
 import com.example.Employee.EntityClass.PermenantEmployee;
 import com.example.Employee.ExceptionHandler.EmployeeNotFoundException;
 import java.util.List;
+import java.util.stream.Collector;
 
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -65,19 +69,20 @@ public class EmpService {
   }
 
   public ResponseEntity<?> getEmployess() {
-    List<Employee> emps = (List<Employee>) dao.findAll();
-    List<?> employees =
-        emps.stream()
-            .map(
+      Pageable pageable  = PageRequest.of(0,5);
+      Page<Employee> emps =dao.findAll(pageable);
+    //List<Employee> emps = (List<Employee>) dao.findAll();
+    Page<?> employees =
+        emps.map(
                 emp -> {
                   if (emp instanceof ContractEmployee) {
                     return mapper.map(emp, ContractEmployeeDTO.class);
                   } else {
                     return mapper.map(emp, PermenantEmployeeDTO.class);
                   }
-                })
-            .toList();
-    return new ResponseEntity<List<?>>(employees, HttpStatus.OK);
+                });
+
+    return new ResponseEntity<Page<?>>(employees, HttpStatus.OK);
   }
 
   public ResponseEntity<?> getEmployee(int id) {

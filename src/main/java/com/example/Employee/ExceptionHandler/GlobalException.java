@@ -13,8 +13,8 @@ public class GlobalException {
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<?> argumentNotValid(MethodArgumentNotValidException exception) {
     HashMap<String, String> errors = new HashMap<>();
-    exception.getBindingResult().getFieldErrors().stream()
-        .map(err -> errors.put(err.getField(), err.getDefaultMessage()));
+    exception.getBindingResult().getFieldErrors()
+            .forEach(err -> errors.put(err.getField(), err.getDefaultMessage()));
     return new ResponseEntity<>(errors, HttpStatus.OK);
   }
 

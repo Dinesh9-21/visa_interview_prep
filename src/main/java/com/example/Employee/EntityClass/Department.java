@@ -2,11 +2,9 @@ package com.example.Employee.EntityClass;
 
 import jakarta.persistence.*;
 import java.util.List;
-
 @Table(name = "department")
 @Entity
 public class Department {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int dept_id;
