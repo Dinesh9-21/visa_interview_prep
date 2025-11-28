@@ -10,6 +10,8 @@ import com.example.Employee.EntityClass.Employee;
 import com.example.Employee.EntityClass.PermenantEmployee;
 import com.example.Employee.ExceptionHandler.EmployeeNotFoundException;
 import java.util.List;
+
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -62,7 +64,7 @@ public class EmpService {
     return new ResponseEntity<>("Department name must not be Empty... ", HttpStatus.NOT_ACCEPTABLE);
   }
 
-  public ResponseEntity<?> getContractEmployess() {
+  public ResponseEntity<?> getEmployess() {
     List<Employee> emps = (List<Employee>) dao.findAll();
     List<?> employees =
         emps.stream()
@@ -92,6 +94,12 @@ public class EmpService {
     return ResponseEntity.ok("Deletion done..... for the ID : " + id);
   }
 
+
+  public ResponseEntity<?> deleteEmployeeByName(String name){
+      dao.deleteByName(name);
+      return new ResponseEntity<>("Emp Deleted",HttpStatus.OK);
+  }
+
   public ResponseEntity<?> getDepartments() {
     List<Department> departments = (List<Department>) dept_dao.findAll();
     return new ResponseEntity<>(departments, HttpStatus.OK);
@@ -107,5 +115,11 @@ public class EmpService {
     }
     return new ResponseEntity<>(
         "Department with provided name already exists", HttpStatus.NOT_ACCEPTABLE);
+  }
+
+
+  public ResponseEntity<?> deleteDepartment(int dept_id){
+      dept_dao.deleteById(dept_id);
+      return new ResponseEntity<>("Deleted Department ",HttpStatus.OK);
   }
 }

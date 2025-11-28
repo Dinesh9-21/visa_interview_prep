@@ -13,7 +13,12 @@ public class Department {
 
   private String deptName;
 
-  @OneToMany(mappedBy = "department") // Refers to Employee's department field
+// Refers to Employee's department field
+  @OneToMany(
+          mappedBy = "department",
+          cascade = CascadeType.ALL,
+          orphanRemoval = true
+  )
   private List<Employee> employee;
 
   public int getDept_id() {

@@ -20,4 +20,9 @@ public class DeptController {
   public ResponseEntity<?> addDepartment(@RequestParam("deptName") String deptName) {
     return service.addDepartment(deptName);
   }
+
+  @DeleteMapping("/delete_department")
+    public ResponseEntity<?> deleteDepartment(@RequestParam int dept_id){
+      return service.deleteDepartment(dept_id);
+  }
 }

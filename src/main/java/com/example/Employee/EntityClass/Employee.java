@@ -21,7 +21,7 @@ public class Employee {
 
   private LocalDate joinDate;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne
   @JoinColumn(name = "department_id", referencedColumnName = "dept_id")
   private Department department;
 
