@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmpService {
 
-  private static Logger logger = LoggerFactory.getLogger(EmpService.class);
+  private static final Logger logger = LoggerFactory.getLogger(EmpService.class);
 
   @Autowired private EmployeeDAO dao;
 
