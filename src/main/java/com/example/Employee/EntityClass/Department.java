@@ -2,6 +2,7 @@ package com.example.Employee.EntityClass;
 
 import jakarta.persistence.*;
 import java.util.List;
+
 @Table(name = "department")
 @Entity
 public class Department {
@@ -11,12 +12,8 @@ public class Department {
 
   private String deptName;
 
-// Refers to Employee's department field
-  @OneToMany(
-          mappedBy = "department",
-          cascade = CascadeType.ALL,
-          orphanRemoval = true
-  )
+  // Refers to Employee's department field
+  @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Employee> employee;
 
   public int getDept_id() {

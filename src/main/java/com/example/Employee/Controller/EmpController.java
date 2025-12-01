@@ -28,10 +28,8 @@ public class EmpController {
     return service.getEmployess();
   }
 
-
   @DeleteMapping("/delete_employee")
-    public ResponseEntity<?> deleteEmployee(@RequestParam("name") String name){
-      return service.deleteEmployeeByName(name);
+  public ResponseEntity<?> deleteEmployee(@RequestParam("name") String name) {
+    return service.deleteEmployeeByName(name);
   }
-
 }
