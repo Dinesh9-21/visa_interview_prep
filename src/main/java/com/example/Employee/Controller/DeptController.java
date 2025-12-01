@@ -22,7 +22,7 @@ public class DeptController {
   }
 
   @DeleteMapping("/delete_department")
-    public ResponseEntity<?> deleteDepartment(@RequestParam int dept_id){
-      return service.deleteDepartment(dept_id);
+  public ResponseEntity<?> deleteDepartment(@RequestParam int dept_id) {
+    return service.deleteDepartment(dept_id);
   }
 }
